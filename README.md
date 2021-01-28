@@ -1,2 +1,3 @@
 # heated-grips-timer
-A heated grips timer
+After i bought some chinese heated grips kit, i came across an issue. The single, on/off switch is a distraction, especially while commuting. On my R1150GS, they become very hot, necessitating the use of a timer. Just change the values and you are ready. You 'll need a relay board, an Arduino ProMini/Uno/Whatever you like. VCC goes to 3.3V, IN to pin2 and GND to GND. After some experimenting, in athenian winter (around 3 degrees Celsius) the best combo is 4 minutes ON, 2 minutes OFF (or even less). 
+I used the code from https://www.instructables.com/Arduino-Repeat-Cycle-Timer/. While the code is solid (thanks a lot fahking), his/hers wiring is not that good. Keep that in mind
