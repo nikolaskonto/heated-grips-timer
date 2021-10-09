@@ -1,0 +1,47 @@
+//as seen at https://www.instructables.com/Arduino-Repeat-Cycle-Timer/
+//Check People's Garage Athens Instagram and Wordpress
+const int relayPin =  2;
+unsigned int relayState = LOW;
+//1000 means 1 second
+long offTime = 60000;
+long onTime = 240000;
+long offTime1st = 30000;
+long onTime1st = 300000;
+unsigned long previousMillis=0; 
+void setup() {
+  // put your setup code here, to run once:
+  pinMode(relayPin, OUTPUT);
+  relayState = LOW;
+  digitalWrite(relayPin, LOW);   
+  long currentMillis = millis(); 
+  if ((relayState==HIGH)&&(currentMillis-previousMillis>=offTime1st))
+  {
+    relayState = LOW;// turn it on
+    previousMillis = currentMillis;   // Remember the time
+    digitalWrite(relayPin, LOW);    // Update the actual relay
+}
+ else if((relayState==LOW)&&(currentMillis-previousMillis>=onTime1st))
+  {
+    //digitalWrite(RELAY2, LOW);
+    relayState=HIGH;  // Turn it off
+    previousMillis = currentMillis;  // Remember the time
+    digitalWrite(relayPin, HIGH);  // Update the actual relay
+  }
+}
+void loop() {
+  // put your main code here, to run repeatedly:
+  long currentMillis = millis(); 
+  if ((relayState==HIGH)&&(currentMillis-previousMillis>=offTime))
+  {
+    relayState = LOW;// turn it on
+    previousMillis = currentMillis;   // Remember the time
+    digitalWrite(relayPin, LOW);    // Update the actual relay
+}
+ else if((relayState==LOW)&&(currentMillis-previousMillis>=onTime))
+  {
+    //digitalWrite(RELAY2, LOW);
+    relayState=HIGH;  // Turn it off
+    previousMillis = currentMillis;  // Remember the time
+    digitalWrite(relayPin, HIGH);  // Update the actual relay
+  }
+}
